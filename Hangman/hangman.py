@@ -2,7 +2,7 @@ import random
 import os
 
 # Set the list of words for the game & randomly select one.
-wordlist = ["hangman", "python", "computer", "dummy"]
+wordlist = ["abyss","bubbly","buzz","buff","cozy","fluff","lucky","puzzle","hangman"]
 gameword = random.choice (wordlist)
 
 wordlen=len(gameword)
