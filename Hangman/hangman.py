@@ -1,5 +1,6 @@
 import random
 import os
+from drawing import gallows
 
 # Set the list of words for the game & randomly select one.
 wordlist = ["abyss","bubbly","buzz","buff","cozy","fluff","lucky","puzzle","hangman"]
@@ -8,43 +9,7 @@ gameword = random.choice (wordlist)
 wordlen=len(gameword)
 allletters = list(gameword)
 
-# Gamestate variables
-drawing=[
-   """  ===|
-  |
-  |
-  |
-__|__ """,
-"""  ===|
-  |  O
-  |
-  |
-__|_""",
-"""  ===|
-  |  O
-  |  |
-  |  |
-__|_""",
-"""  ===|
-  |  O
-  | /|
-  |  |
-__|_""",
-"""  ===|
-  |  O
-  | /|\\
-  |  |
-__|_""",
-"""  ===|
-  |  O
-  | /|\\
-  |  |
-__|_/""",
-"""  ===|
-  |  O
-  | /|\\
-  |  |
-__|_/ \\"""]
+
 
 # Game output set inital value
 gameout = ["_"] * wordlen
@@ -54,7 +19,7 @@ guesses = []
 
 while gamestate < 6:
     os.system('cls')
-    print(drawing[gamestate])
+    gallows(gamestate)
     print("Your word has ", str(wordlen), " letters.")
     print(*gameout)
     print(*guesses)
@@ -74,6 +39,6 @@ while gamestate < 6:
         print("You Win")
         exit()
 
-print(drawing[6])
+gallows(6)
 print("Stop Doing It Wrong!")
 
