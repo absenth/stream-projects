@@ -9,13 +9,10 @@ gameword = random.choice (wordlist)
 wordlen=len(gameword)
 allletters = list(gameword)
 
-
-
 # Game output set inital value
 gameout = ["_"] * wordlen
 gamestate = 0
 guesses = []
-
 
 while gamestate < 6:
     os.system('cls')
@@ -35,10 +32,9 @@ while gamestate < 6:
         gamestate = gamestate +1
         print(*gameout)
     if "_" not in gameout:
-        print(drawing[gamestate])
+        gallows(gamestate)
         print("You Win")
         exit()
 
 gallows(6)
 print("Stop Doing It Wrong!")
-
