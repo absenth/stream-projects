@@ -1,10 +1,9 @@
-import random
 import os
 from drawing import gallows
+from wordlist import pickword
 
 # Set the list of words for the game & randomly select one.
-wordlist = ["abyss","bubbly","buzz","buff","cozy","fluff","lucky","puzzle","hangman"]
-gameword = random.choice (wordlist)
+gameword = pickword()
 
 wordlen=len(gameword)
 allletters = list(gameword)
