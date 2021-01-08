@@ -37,3 +37,4 @@ while gamestate < 6:
 
 gallows(6)
 print("Stop Doing It Wrong!")
+print("Your word was", gameword)
