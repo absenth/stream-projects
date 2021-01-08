@@ -37,6 +37,5 @@ __|_/""",
   |  |
 __|_/ \\"""]
 
-
 def gallows(gs):
     print(drawing[gs])
