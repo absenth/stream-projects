@@ -7,14 +7,14 @@ targets = [
         "1", "2", "3", "4", "5"
         ]
 
-itteration = int(input("Please enter the number of itterations: "))
+iteration = int(input("Please enter the number of itterations: "))
 
-while itteration > 0:
+for _ in range(iteration):
   targetcount = random.randint(1, 5)
   input("press enter when ready")
   while targetcount > 0:
     random_index = random.randrange(len(targets))
-    os.system('echo "{0}" | festival --tts'.format(random_index)) 
+    os.system('echo "{0}" | festival --tts'.format(random.choice(targets))) 
     targetcount = targetcount - 1 
-  itteration = itteration - 1
+  iteration = iteration - 1
 
