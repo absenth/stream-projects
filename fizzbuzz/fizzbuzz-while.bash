@@ -1,6 +1,7 @@
 #!/bin/bash
 
-for n in $(seq 100000)
+n=1
+while [ $n -lt 100001 ]
 do
     if (( $n % 15 == 0 )); then
         echo "fizzbuzz"
@@ -11,4 +12,5 @@ do
     else
         echo $n
     fi
+    n=$((n+1))
 done
