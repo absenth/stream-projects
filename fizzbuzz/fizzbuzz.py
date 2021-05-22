@@ -1,12 +1,12 @@
 # first attempt ever at solving FizzBuzz
 # https://wiki.c2.com/?FizzBuzzTest
 
-for n in range(100):
-    if (n+1) %3 == 0 and (n+1) %5 == 0:
+for n in range(1,10000001):
+    if (n) %3 == 0 and (n) %5 == 0:
         print("fizzbuzz")
-    elif (n+1) %3 == 0:
+    elif (n) %3 == 0:
         print("fizz")
-    elif (n+1) %5 == 0:
+    elif (n) %5 == 0:
         print("buzz")
     else:
-        print(n+1)
+        print(n)
