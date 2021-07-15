@@ -11,14 +11,13 @@ import re
 def main():
     """Take a temperature as input and feed that to the conversion  function"""
     KnownTemperature = input("Input Temperature. ie:'27c' ")
-
+    
     if CheckInput(KnownTemperature):
         ConvertedTemperature = ConvertTemp(KnownTemperature)
         Temp = ConvertedTemperature[0: -1]
         Unit = ConvertedTemperature[-1]
         Temp = round(float(Temp), 2)
         print(f"{Temp}{Unit}")
-
 
 def ConvertTemp(input):
     """Take a temperature as input, and convert it"""
@@ -46,6 +45,7 @@ def CheckInput(input):
 if __name__ == "__main__":
     main()
 
+    
 '''  Example improvement from Flyboy1565 on a better way to convert
 
 def ConvertTemp(input):
