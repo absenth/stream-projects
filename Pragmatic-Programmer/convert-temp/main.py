@@ -16,8 +16,7 @@ def main():
         ConvertedTemperature = ConvertTemp(KnownTemperature)
         Temp = ConvertedTemperature[0: -1]
         Unit = ConvertedTemperature[-1]
-        Temp = float(Temp)
-        Temp = round(Temp, 2)
+        Temp = round(float(Temp), 2)
         print(f"{Temp}{Unit}")
 
 
