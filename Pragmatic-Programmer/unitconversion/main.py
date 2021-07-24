@@ -13,8 +13,8 @@ def main():
 
     print("Please Provide a Value and Unit to convert.")
     print("ie: 27c for celcius, or 75m for miles")
-    UserValue = input("> ")
-    CheckInput(UserValue)
+    user_value = input("> ")
+    check_input(user_value)
 
     # Validate Input is Valid
     # Pass User Input to detect_Unit()
@@ -22,79 +22,79 @@ def main():
     # Present the returned Converted Value
 
 
-def CheckInput(input):
+def check_input(input):
     """This function will check for valid user input"""
     if '.' in input:
         check = bool(re.match(r"^\d+.\d+[a-zA-Z]{1,2}$", input))
     else:
         check = bool(re.match(r"^\d+[a-zA-Z{1,2}$", input))
     if check is False:
-        InvalidInput(input)
+        invalid_input(input)
 
 
-def DetectUnit(input):
+def detect_unit(input):
     """This function will read the user's input and determine
        which conversion function is needed"""
     if bool(re.match(r"^.*[a-zA-Z]{2}$", input)):
         unit = input[-2].lower()
         value = input[0: -2]
         switch (unit) {
-            case km: conversion = "KMtoM";
+            case km: conversion = "km2m";
                      break;
-            case kg: conversion = "KGtoP";
+            case kg: conversion = "kg2g";
                      break;
         return(conversion,value)
     else:
         unit = input[-1].lower()
         value = input[0: -1]
         switch (unit) {
-            case c: conversion = "CtoF";
+            case c: conversion = "c2f";
                     break;
-            case f: conversion = "FtoC";
+            case f: conversion = "f2c";
                     break;
-            case m: conversion = "MtoKM";
+            case m: conversion = "m2km";
                     break;
-            case g: conversion = "GtoL";
+            case g: conversion = "g2l";
                     break;
-            case l: conversion = "LtoG";
+            case l: conversion = "l2g";
                     break;
-            case p: conversion = "PtoKG";
+            case p: conversion = "p2kg";
                     break;
         return(conversion,value)
 
 
-def CtoF():
+def c2f():
     """This function converts Celcius to Fahrenheit and returns"""
 
 
-def FtoC():
+def f2c():
     """This function converts Fahrenheit to Celcius and returns"""
 
 
-def MtoKM():
+def m2km():
     """This function converts Miles to Kilometers"""
 
 
-def KMtoM():
+def km2m():
     """This function converts Kilometers to Miles"""
 
 
-def GtoL():
+def g2l():
     """This function converts Gallons to Liters"""
 
 
-def LtoG():
+def l2g():
     """This function converts Liters to Gallons"""
 
 
-def PtoKG():
+def p2kg():
     """This function converts Pounds to Kilograms"""
 
 
-def KGtoP():
+def kg2p():
     """This function converts Kilograms to Pounds"""
 
 
-def InvalidInput(input):
+def invalid_input(input):
     """This will print a help string for the user, and return them
        back to the main function to try again."""
