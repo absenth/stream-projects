@@ -35,12 +35,32 @@ def CheckInput(input):
 def DetectUnit(input):
     """This function will read the user's input and determine
        which conversion function is needed"""
-    if bool(re.match(^.*[a-zA-Z]{2}$", input)):
-        # do pull the last two
-        # return(conversion,value)
+    if bool(re.match(r"^.*[a-zA-Z]{2}$", input)):
+        unit = input[-2].lower()
+        value = input[0: -2]
+        switch (unit) {
+            case km: conversion = "KMtoM";
+                     break;
+            case kg: conversion = "KGtoP";
+                     break;
+        return(conversion,value)
     else:
-        # do pull the last one
-        # return(conversion,value)
+        unit = input[-1].lower()
+        value = input[0: -1]
+        switch (unit) {
+            case c: conversion = "CtoF";
+                    break;
+            case f: conversion = "FtoC";
+                    break;
+            case m: conversion = "MtoKM";
+                    break;
+            case g: conversion = "GtoL";
+                    break;
+            case l: conversion = "LtoG";
+                    break;
+            case p: conversion = "PtoKG";
+                    break;
+        return(conversion,value)
 
 
 def CtoF():
