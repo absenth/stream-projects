@@ -40,21 +40,8 @@ def main():
         weight = round(float(kg2p(value)), 2)
         print(f"Weight is {weight} pounds")
     else:
-        """
-        print(f"You input {user_value} which wasn't understood.")
-        print(f"Please input a value like 27c")
-        print(f"Units this program understands are:")
-        print(f"c = celcius / f = fahrenheit / m = miles / km = kilometers")
-        print(f"g = gallons / l = liters / p = poundsa / kg = kilograms")
-        print("")
-        main()
-        """
         invalid_input(user_value)
 
-    # Validate Input is Valid
-    # Pass User Input to detect_Unit()
-    # Call Function and pass the value
-    # Present the returned Converted Value
 
 
 def detect_unit(input):
