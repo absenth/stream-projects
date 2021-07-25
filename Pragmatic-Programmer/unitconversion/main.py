@@ -14,7 +14,42 @@ def main():
     print("Please Provide a Value and Unit to convert.")
     print("ie: 27c for celcius, or 75m for miles")
     user_value = input("> ")
-    check_input(user_value)
+    value, unit = detect_unit(user_value)
+    if unit == "c":
+        temp = round(float(c2f(value)), 2)
+        print(f"Temperature is {temp} degrees Fahrenheit")
+    elif unit == "f":
+        temp = round(float(f2c(value)), 2)
+        print(f"Temperature is {temp} degrees Celcius")
+    elif unit == "m":
+        distance = round(float(m2km(value)), 2)
+        print(f"Distance is {distance} kilometers")
+    elif unit == "km":
+        distance = round(float(km2m(value)), 2)
+        print(f"Distance is {distance} miles")
+    elif unit == "g":
+        volume = round(float(g2l(value)), 2)
+        print(f"Volume is {volume} liters")
+    elif unit == "l":
+        volume = round(float(l2g(value)), 2)
+        print(f"Volume is {volume} gallons")
+    elif unit == "p":
+        weight = round(float(p2kg(value)), 2)
+        print(f"Weight is {weight} kilograms")
+    elif unit == "kg":
+        weight = round(float(kg2p(value)), 2)
+        print(f"Weight is {weight} pounds")
+    else:
+        """
+        print(f"You input {user_value} which wasn't understood.")
+        print(f"Please input a value like 27c")
+        print(f"Units this program understands are:")
+        print(f"c = celcius / f = fahrenheit / m = miles / km = kilometers")
+        print(f"g = gallons / l = liters / p = poundsa / kg = kilograms")
+        print("")
+        main()
+        """
+        invalid_input(user_value)
 
     # Validate Input is Valid
     # Pass User Input to detect_Unit()
@@ -22,79 +57,75 @@ def main():
     # Present the returned Converted Value
 
 
-def check_input(input):
-    """This function will check for valid user input"""
-    if '.' in input:
-        check = bool(re.match(r"^\d+.\d+[a-zA-Z]{1,2}$", input))
-    else:
-        check = bool(re.match(r"^\d+[a-zA-Z{1,2}$", input))
-    if check is False:
-        invalid_input(input)
-
-
 def detect_unit(input):
     """This function will read the user's input and determine
        which conversion function is needed"""
-    if bool(re.match(r"^.*[a-zA-Z]{2}$", input)):
-        unit = input[-2].lower()
-        value = input[0: -2]
-        switch (unit) {
-            case km: conversion = "km2m";
-                     break;
-            case kg: conversion = "kg2g";
-                     break;
-        return(conversion,value)
-    else:
-        unit = input[-1].lower()
-        value = input[0: -1]
-        switch (unit) {
-            case c: conversion = "c2f";
-                    break;
-            case f: conversion = "f2c";
-                    break;
-            case m: conversion = "m2km";
-                    break;
-            case g: conversion = "g2l";
-                    break;
-            case l: conversion = "l2g";
-                    break;
-            case p: conversion = "p2kg";
-                    break;
-        return(conversion,value)
+    m = re.search(r"^(?P<value>.+?)(?P<unit>[a-zA-Z]+)$", input)
+    value = m.group('value')
+    unit = m.group('unit').lower()
+    return(value, unit)
 
 
-def c2f():
+def c2f(input):
     """This function converts Celcius to Fahrenheit and returns"""
+    temp = (float(input) * 1.8) + 32
+    return(temp)
 
 
-def f2c():
+def f2c(input):
     """This function converts Fahrenheit to Celcius and returns"""
+    temp = (float(input) - 32) / 1.8
+    return(temp)
 
 
-def m2km():
+def m2km(input):
     """This function converts Miles to Kilometers"""
+    dist = float(input) * 1.609344
+    return(dist)
 
 
-def km2m():
+def km2m(input):
     """This function converts Kilometers to Miles"""
+    dist = float(input) / 1.609344
+    return(dist)
 
 
-def g2l():
+def g2l(input):
     """This function converts Gallons to Liters"""
+    volume = float(input) / 0.26417
+    return(volume)
 
 
-def l2g():
+def l2g(input):
     """This function converts Liters to Gallons"""
+    volume = float(input) * 0.26417
+    return(volume)
 
 
-def p2kg():
+def p2kg(input):
     """This function converts Pounds to Kilograms"""
+    weight = float(input) * 0.44349237
+    return(weight)
 
 
-def kg2p():
+def kg2p(input):
     """This function converts Kilograms to Pounds"""
+    weight = float(input) / 0.44349237
+    return(weight)
 
 
 def invalid_input(input):
     """This will print a help string for the user, and return them
        back to the main function to try again."""
+    print(f"You input {input} which wasn't understood.")
+    print("Please input a value like 27c")
+    print("Units this program understands are:")
+    print("c = celcius / f = fahrenheit / m = miles / km = kilometers")
+    print("g = gallons / l = liters / p = poundsa / kg = kilograms")
+    print("")
+
+    main()
+
+
+if __name__ == "__main__":
+    main()
