@@ -13,7 +13,13 @@ def main():
 
     print("Please Provide a Value and Unit to convert.")
     print("ie: 27c for celcius, or 75m for miles")
+    user_value = ""
     user_value = input("> ")
+
+    # validate that the user input a proper value
+    check_input(user_value)
+
+    # detect the expecte conversion and execute
     value, unit = detect_unit(user_value)
     if unit == "c":
         temp = round(float(c2f(value)), 2)
@@ -42,6 +48,15 @@ def main():
     else:
         invalid_input(user_value)
 
+
+def check_input(input):
+    if '.' in input:
+        check = bool(re.match(r"^\d+\.\d+[a-zA-Z]$", input))
+    else:
+        check = bool(re.match(r"^\d+[a-zA-Z]$", input))
+    if check is False:
+        invalid_input(input)
+    return check
 
 
 def detect_unit(input):
