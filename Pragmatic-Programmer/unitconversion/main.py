@@ -20,28 +20,28 @@ def main():
         # detect the expecte conversion and execute
         value, unit = detect_unit(user_value)
         if unit == "c":
-            temp = round(float(c2f(value)), 2)
+            temp = round(float(celsius_to_fahrenheit(value)), 2)
             print(f"Temperature is {temp} degrees Fahrenheit")
         elif unit == "f":
-            temp = round(float(f2c(value)), 2)
+            temp = round(float(fahrenheit_to_celsius(value)), 2)
             print(f"Temperature is {temp} degrees Celcius")
         elif unit == "m":
-            distance = round(float(m2km(value)), 2)
+            distance = round(float(miles_to_kilometers(value)), 2)
             print(f"Distance is {distance} kilometers")
         elif unit == "km":
-            distance = round(float(km2m(value)), 2)
+            distance = round(float(kilometers_to_miles(value)), 2)
             print(f"Distance is {distance} miles")
         elif unit == "g":
-            volume = round(float(g2l(value)), 2)
+            volume = round(float(gallons_to_liters(value)), 2)
             print(f"Volume is {volume} liters")
         elif unit == "l":
-            volume = round(float(l2g(value)), 2)
+            volume = round(float(liters_to_gallons(value)), 2)
             print(f"Volume is {volume} gallons")
         elif unit == "p":
-            weight = round(float(p2kg(value)), 2)
+            weight = round(float(pounds_to_kilograms(value)), 2)
             print(f"Weight is {weight} kilograms")
         elif unit == "kg":
-            weight = round(float(kg2p(value)), 2)
+            weight = round(float(kilograms_to_pounds(value)), 2)
             print(f"Weight is {weight} pounds")
         else:
             invalid_input(user_value)
@@ -52,7 +52,7 @@ def check_input(input):
         check = bool(re.match(r"^\d+\.\d+[a-zA-Z]$", input))
     else:
         check = bool(re.match(r"^\d+[a-zA-Z]$", input))
-    if check is False:
+    if not check:
         invalid_input(input)
     return check
 
@@ -63,55 +63,55 @@ def detect_unit(input):
     m = re.search(r"^(?P<value>.+?)(?P<unit>[a-zA-Z]+)$", input)
     value = m.group('value')
     unit = m.group('unit').lower()
-    return(value, unit)
+    return value, unit
 
 
-def c2f(input):
+def celsius_to_fahrenheit(input):
     """This function converts Celcius to Fahrenheit and returns"""
     temp = (float(input) * 1.8) + 32
-    return(temp)
+    return temp
 
 
-def f2c(input):
+def fahrenheit_to_celsius(input):
     """This function converts Fahrenheit to Celcius and returns"""
     temp = (float(input) - 32) / 1.8
-    return(temp)
+    return temp
 
 
-def m2km(input):
+def miles_to_kilometers(input):
     """This function converts Miles to Kilometers"""
     dist = float(input) * 1.609344
-    return(dist)
+    return dist
 
 
-def km2m(input):
+def kilometers_to_miles(input):
     """This function converts Kilometers to Miles"""
     dist = float(input) / 1.609344
-    return(dist)
+    return dist
 
 
-def g2l(input):
+def gallons_to_liters(input):
     """This function converts Gallons to Liters"""
     volume = float(input) / 0.26417
-    return(volume)
+    return volume
 
 
-def l2g(input):
+def liters_to_gallons(input):
     """This function converts Liters to Gallons"""
     volume = float(input) * 0.26417
-    return(volume)
+    return volume
 
 
-def p2kg(input):
+def pounds_to_kilograms(input):
     """This function converts Pounds to Kilograms"""
     weight = float(input) * 0.44349237
-    return(weight)
+    return weight
 
 
-def kg2p(input):
+def kilograms_to_pounds(input):
     """This function converts Kilograms to Pounds"""
     weight = float(input) / 0.44349237
-    return(weight)
+    return weight
 
 
 def invalid_input(input):
