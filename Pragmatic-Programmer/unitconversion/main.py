@@ -47,77 +47,77 @@ def main():
             invalid_input(user_value)
 
 
-def check_input(input):
-    if '.' in input:
-        check = bool(re.match(r"^\d+\.\d+[a-zA-Z]$", input))
+def check_input(user_value):
+    if '.' in user_value:
+        check = bool(re.match(r"^\d+\.\d+[a-zA-Z]$", user_value))
     else:
-        check = bool(re.match(r"^\d+[a-zA-Z]$", input))
+        check = bool(re.match(r"^\d+[a-zA-Z]$", user_value))
     if not check:
-        invalid_input(input)
+        invalid_input(user_value)
     return check
 
 
-def detect_unit(input):
+def detect_unit(user_value):
     """This function will read the user's input and determine
        which conversion function is needed"""
-    m = re.search(r"^(?P<value>.+?)(?P<unit>[a-zA-Z]+)$", input)
+    m = re.search(r"^(?P<value>.+?)(?P<unit>[a-zA-Z]+)$", user_value)
     value = m.group('value')
     unit = m.group('unit').lower()
     return value, unit
 
 
-def celsius_to_fahrenheit(input):
+def celsius_to_fahrenheit(value):
     """This function converts Celcius to Fahrenheit and returns"""
-    temp = (float(input) * 1.8) + 32
+    temp = (float(value) * 1.8) + 32
     return temp
 
 
-def fahrenheit_to_celsius(input):
+def fahrenheit_to_celsius(value):
     """This function converts Fahrenheit to Celcius and returns"""
-    temp = (float(input) - 32) / 1.8
+    temp = (float(value) - 32) / 1.8
     return temp
 
 
-def miles_to_kilometers(input):
+def miles_to_kilometers(value):
     """This function converts Miles to Kilometers"""
-    dist = float(input) * 1.609344
+    dist = float(value) * 1.609344
     return dist
 
 
-def kilometers_to_miles(input):
+def kilometers_to_miles(value):
     """This function converts Kilometers to Miles"""
-    dist = float(input) / 1.609344
+    dist = float(value) / 1.609344
     return dist
 
 
-def gallons_to_liters(input):
+def gallons_to_liters(value):
     """This function converts Gallons to Liters"""
-    volume = float(input) / 0.26417
+    volume = float(value) / 0.26417
     return volume
 
 
-def liters_to_gallons(input):
+def liters_to_gallons(value):
     """This function converts Liters to Gallons"""
-    volume = float(input) * 0.26417
+    volume = float(value) * 0.26417
     return volume
 
 
-def pounds_to_kilograms(input):
+def pounds_to_kilograms(value):
     """This function converts Pounds to Kilograms"""
-    weight = float(input) * 0.44349237
+    weight = float(value) * 0.44349237
     return weight
 
 
-def kilograms_to_pounds(input):
+def kilograms_to_pounds(value):
     """This function converts Kilograms to Pounds"""
-    weight = float(input) / 0.44349237
+    weight = float(value) / 0.44349237
     return weight
 
 
-def invalid_input(input):
+def invalid_input(user_value):
     """This will print a help string for the user, and return them
        back to the main function to try again."""
-    print(f"You input {input} which wasn't understood.")
+    print(f"You input {user_value} which wasn't understood.")
     print("Please input a value like 27c")
     print("Units this program understands are:")
     print("c = celsius / f = fahrenheit / m = miles / km = kilometers")
