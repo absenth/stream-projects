@@ -44,57 +44,49 @@ def detect_unit(user_value):
 def celsius_to_fahrenheit(value):
     """This function converts Celcius to Fahrenheit and returns"""
     temp = round((float(value) * 1.8 ) + 32, 2)
-    output = f"Temperature is {temp} degrees fahrenheit"
-    return output
+    return f"Temperature is {temp} degrees fahrenheit"
 
 
 def fahrenheit_to_celsius(value):
     """This function converts Fahrenheit to Celcius and returns"""
     temp = round((float(value) - 32) / 1.8, 2)
-    output = f"Temperature is {temp} degrees celsius"
-    return output
+    return f"Temperature is {temp} degrees celsius"
 
 
 def miles_to_kilometers(value):
     """This function converts Miles to Kilometers"""
     dist = round(float(value) * 1.609344, 2)
-    output = f"Distance is {dist} kilometers"
-    return output
+    return f"Distance is {dist} kilometers"
 
 
 def kilometers_to_miles(value):
     """This function converts Kilometers to Miles"""
     dist = round(float(value) / 1.609344, 2)
-    output = f"Distance is {dist} miles"
-    return output
+    return f"Distance is {dist} miles"
 
 
 def gallons_to_liters(value):
     """This function converts Gallons to Liters"""
     volume = round(float(value) / 0.26417, 2)
-    output = f"Volume is {volume} liters"
-    return output
+    return f"Volume is {volume} liters"
 
 
 def liters_to_gallons(value):
     """This function converts Liters to Gallons"""
     volume = round(float(value) * 0.26417, 2)
-    output = f"Volume is {volume} gallons"
-    return output
+    return f"Volume is {volume} gallons"
 
 
 def pounds_to_kilograms(value):
     """This function converts Pounds to Kilograms"""
     weight = round(float(value) * 0.44349237, 2)
-    output = f"Weight is {weight} kilograms"
-    return output
+    return f"Weight is {weight} kilograms"
 
 
 def kilograms_to_pounds(value):
     """This function converts Kilograms to Pounds"""
     weight = round(float(value) / 0.44349237, 2)
-    output = f"Weight is {weight} pounds"
-    return output
+    return f"Weight is {weight} pounds"
 
 
 def invalid_input(user_value):
