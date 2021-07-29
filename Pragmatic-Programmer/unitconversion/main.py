@@ -102,7 +102,7 @@ def invalid_input(user_value):
     main()
 
 
-conversion_method = {'c': celsius_to_fahrenheit, "f": fahrenheit_to_celsius,
+conversion_method = {'c': celsius_to_fahrenheit, 'f': fahrenheit_to_celsius,
         'm': miles_to_kilometers, 'km': kilometers_to_miles, 'g': gallons_to_liters,
         'l': liters_to_gallons, 'p': pounds_to_kilograms, 'kg': kilograms_to_pounds}
 
