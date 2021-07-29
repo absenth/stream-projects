@@ -19,33 +19,8 @@ def main():
     if check_input(user_value):
         # detect the expecte conversion and execute
         value, unit = detect_unit(user_value)
-        if unit == "c":
-            temp = celsius_to_fahrenheit(value)
-            print(f"Temperature is {temp} degrees Fahrenheit")
-        elif unit == "f":
-            temp = fahrenheit_to_celsius(value)
-            print(f"Temperature is {temp} degrees Celcius")
-        elif unit == "m":
-            distance = miles_to_kilometers(value)
-            print(f"Distance is {distance} kilometers")
-        elif unit == "km":
-            distance = kilometers_to_miles(value)
-            print(f"Distance is {distance} miles")
-        elif unit == "g":
-            volume = gallons_to_liters(value)
-            print(f"Volume is {volume} liters")
-        elif unit == "l":
-            volume = liters_to_gallons(value)
-            print(f"Volume is {volume} gallons")
-        elif unit == "p":
-            weight = pounds_to_kilograms(value)
-            print(f"Weight is {weight} kilograms")
-        elif unit == "kg":
-            weight = kilograms_to_pounds(value)
-            print(f"Weight is {weight} pounds")
-        else:
-            invalid_input(user_value)
-
+        output = conversion_method[unit](value)
+        print(output)
 
 def check_input(user_value):
     if '.' in user_value:
@@ -69,49 +44,57 @@ def detect_unit(user_value):
 def celsius_to_fahrenheit(value):
     """This function converts Celcius to Fahrenheit and returns"""
     temp = round((float(value) * 1.8 ) + 32, 2)
-    return temp
+    output = f"Temperature is {temp} degrees fahrenheit"
+    return output
 
 
 def fahrenheit_to_celsius(value):
     """This function converts Fahrenheit to Celcius and returns"""
     temp = round((float(value) - 32) / 1.8, 2)
-    return temp
+    output = f"Temperature is {temp} degrees celsius"
+    return output
 
 
 def miles_to_kilometers(value):
     """This function converts Miles to Kilometers"""
     dist = round(float(value) * 1.609344, 2)
-    return dist
+    output = f"Distance is {dist} kilometers"
+    return output
 
 
 def kilometers_to_miles(value):
     """This function converts Kilometers to Miles"""
     dist = round(float(value) / 1.609344, 2)
-    return dist
+    output = f"Distance is {dist} miles"
+    return output
 
 
 def gallons_to_liters(value):
     """This function converts Gallons to Liters"""
     volume = round(float(value) / 0.26417, 2)
-    return volume
+    output = f"Volume is {volume} liters"
+    return output
 
 
 def liters_to_gallons(value):
     """This function converts Liters to Gallons"""
     volume = round(float(value) * 0.26417, 2)
-    return volume
+    output = f"Volume is {volume} gallons"
+    return output
 
 
 def pounds_to_kilograms(value):
     """This function converts Pounds to Kilograms"""
     weight = round(float(value) * 0.44349237, 2)
-    return weight
+    output = f"Weight is {weight} kilograms"
+    return output
 
 
 def kilograms_to_pounds(value):
     """This function converts Kilograms to Pounds"""
     weight = round(float(value) / 0.44349237, 2)
-    return weight
+    output = f"Weight is {weight} pounds"
+    return output
 
 
 def invalid_input(user_value):
@@ -125,6 +108,11 @@ def invalid_input(user_value):
     print("")
 
     main()
+
+
+conversion_method = {'c': celsius_to_fahrenheit, "f": fahrenheit_to_celsius,
+        'm': miles_to_kilometers, 'km': kilometers_to_miles, 'g': gallons_to_liters,
+        'l': liters_to_gallons, 'p': pounds_to_kilograms, 'kg': kilograms_to_pounds}
 
 
 if __name__ == "__main__":
