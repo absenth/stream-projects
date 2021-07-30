@@ -46,83 +46,94 @@ def detect_unit(user_value):
 def celsius_to_fahrenheit(value):
     '''This function converts Celcius to Fahrenheit and returns'''
     temp = round((float(value) * 1.8) + 32, 2)
-    return f'Temperature is {temp} degrees fahrenheit'
+    return temp
 
 
 def fahrenheit_to_celsius(value):
     '''This function converts Fahrenheit to Celcius and returns'''
     temp = round((float(value) - 32) / 1.8, 2)
-    return f'Temperature is {temp} degrees celsius'
+    return temp
 
 
 def miles_to_kilometers(value):
     '''This function converts Miles to Kilometers'''
     dist = round(float(value) * 1.609344, 2)
-    return f'Distance is {dist} kilometers'
+    return dist
 
 
 def kilometers_to_miles(value):
     '''This function converts Kilometers to Miles'''
     dist = round(float(value) / 1.609344, 2)
-    return f'Distance is {dist} miles'
+    return dist
 
 
 def gallons_to_liters(value):
     '''This function converts Gallons to Liters'''
     volume = round(float(value) / 0.26417, 2)
-    return f'Volume is {volume} liters'
+    return volume
 
 
 def liters_to_gallons(value):
     '''This function converts Liters to Gallons'''
     volume = round(float(value) * 0.26417, 2)
-    return f'Volume is {volume} gallons'
+    return volume
 
 
 def pounds_to_kilograms(value):
     '''This function converts Pounds to Kilograms'''
     weight = round(float(value) * 0.44349237, 2)
-    return f'Weight is {weight} kilograms'
+    return weight
 
 
 def kilograms_to_pounds(value):
     '''This function converts Kilograms to Pounds'''
     weight = round(float(value) / 0.44349237, 2)
-    return f'Weight is {weight} pounds'
+    return weight
+
+
+def invalid_input(user_value):
+    """This will print a help string for the user, and return them
+       back to the main function to try again."""
+    print(f"You input {user_value} which wasn't understood.")
+    print("Please input a value like 27c")
+    print("Units this program understands are:")
+    print("c = celsius / f = fahrenheit / m = miles / km = kilometers")
+    print("g = gallons / l = liters / p = poundsa / kg = kilograms")
+    print("")
 
 
 config = {
         'f': {
-            convert: fahrenheit_to_celsius,
-            display: 'Temperature is {value} degrees celsius',
+            'convert': fahrenheit_to_celsius,
+            'display': 'Temperature is {value} degrees celsius',
         },
         'c': {
-            convert: celsius_to_fahrenheit,
-            display: 'Temperature is {value} degrees fahrenheit',
+            'convert': celsius_to_fahrenheit,
+            'display': 'Temperature is {value} degrees fahrenheit',
         },
         'm': {
-            convert: miles_to_kilometers,
-            display: 'Distance is {value} kilometers',
+            'convert': miles_to_kilometers,
+            'display': 'Distance is {value} kilometers',
         },
         'km': {
-            convert: kilometers_to_miles,
-            display: 'Distance is {value} miles',
+            'convert': kilometers_to_miles,
+            'display': 'Distance is {value} miles',
         },
         'g': {
-            convert: gallons_to_liters,
-            display: 'Volume is {value} liters',
+            'convert': gallons_to_liters,
+            'display': 'Volume is {value} liters',
         },
         'l': {
-            convert: liters_to_gallons,
-            display: 'Volume is {value} gallons',
+            'convert': liters_to_gallons,
+            'display': 'Volume is {value} gallons',
         },
         'p': {
-            convert: pounds_to_kilograms,
-            display: 'Weight is {value} kilograms',
+            'convert': pounds_to_kilograms,
+            'display': 'Weight is {value} kilograms',
         },
         'kg': {
-            convert: kilograms_to_pounds,
-            display: 'Weight is {value} pounds',
+            'convert': kilograms_to_pounds,
+            'display': 'Weight is {value} pounds',
         },
     }
 
