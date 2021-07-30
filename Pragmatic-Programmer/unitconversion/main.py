@@ -115,6 +115,7 @@ config = {
         'l': {
             convert: liters_to_gallons,
             display: 'Volume is {value} gallons',
+        },
         'p': {
             convert: pounds_to_kilograms,
             display: 'Weight is {value} kilograms',
