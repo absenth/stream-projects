@@ -1,21 +1,25 @@
 import os
 import socket
+import pandas as pd
 from collections import namedtuple
 
 
-TEMPLATE_COMMANDS = {
-        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
-        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
-        '!project': 'Currently, we have no idea what we are doing.',
-        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
-        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
-        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
-}
+#TEMPLATE_COMMANDS = {
+#        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
+#        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
+#        '!project': 'Currently, we have no idea what we are doing.',
+#        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
+#        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
+#        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
+#}
 
 Message = namedtuple(
     'Message',
     'prefix user channel irc_command irc_args text text_command text_args',
 )
+
+
+FILE = 'commands.csv'
 
 
 class Bot:
@@ -102,7 +106,7 @@ class Bot:
         )
         return message
 
-    def handle_template_command(self, message, text_command, template):
+    def handle_template_command(self, message, template):
         text = template.format(**{'message': message,})
         self.send_privmsg(message.channel, text)
 
@@ -119,10 +123,18 @@ class Bot:
             self.send_command('PONG :tmi.twitch.tv')
 
         if message.irc_command == 'PRIVMSG':
-            if message.text_command in TEMPLATE_COMMANDS:
+            if os.isfile(FILE):
+                df = pd.read_csv(FILE)
+                
+                for commands in pd.read_csv(FILE)['Commands']:
+                    if message.replace(" ", "") is commands.replace(" ", ""):
+                        row = df.index[df['Commands'] == message.replace(" ", "")].tolist()
+                        self.handle_template_command(
+                                message,
+                                df['Output'][row]
+            elif message.text_command in TEMPLATE_COMMANDS:
                 self.handle_template_command(
                     message,
-                    message.text_command,
                     TEMPLATE_COMMANDS[message.text_command],
 
                 )
