@@ -21,14 +21,6 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.channel.name == 'general':
-        if user_message.lower() == 'nerds':
-            await message.channel.send(f"{username} you're doing it wrong... Stop Doing it wrong!!!")
-            return
-        if user_message.lower() == 'nerds!':
-            await message.channel.send(f"{username} you're doing it wrong... Stop Doing it wrong!!!")
-            return
-
     if user_message.lower() == 'hello':
         await message.channel.send(f'Hi {username}!')
         return
@@ -38,8 +30,5 @@ async def on_message(message):
     elif user_message.lower() == 'goodnight':
         await message.channel.send('Sleep is an inappropriate substitute for caffeine!')
         return
-    elif user_message.lower() == "Lars can't do anything right.":
-        await message.channel.send('I know right!  Lars is the worst!')
-
 
 client.run(user_token)
