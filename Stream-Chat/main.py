@@ -1,9 +1,16 @@
-
-
 import os
 import socket
 from collections import namedtuple
 
+
+TEMPLATE_COMMANDS = {
+        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
+        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
+        '!project': 'Currently, we have no idea what we are doing.',
+        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
+        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
+        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
+}
 
 Message = namedtuple(
     'Message',
@@ -18,6 +25,7 @@ class Bot:
         self.oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
         self.username = 'botsenth545'
         self.channels = ['absenth762']
+        # self.load_template_commands('.commands.csv') -- Not ready for this yet
 
     def send_privmsg(self, channel, text):
         self.send_command(f'PRIVMSG #{channel} :{text}')
@@ -94,8 +102,12 @@ class Bot:
         )
         return message
 
+    def handle_template_command(self, message, text_command, template):
+        text = template.format(**{'message': message,})
+        self.send_privmsg(message.channel, text)
+
+
     def handle_message(self, received_msg):
-        ignore_list = ['001', '002', '003', '004', '375', '372', '376']
 
         if len(received_msg) == 0:
             return
@@ -103,11 +115,17 @@ class Bot:
         message = self.parse_message(received_msg)
         print(f'> {message}')
 
-        if message.irc_command in ignore_list:
-            return
-
         if message.irc_command == 'PING':
             self.send_command('PONG :tmi.twitch.tv')
+
+        if message.irc_command == 'PRIVMSG':
+            if message.text_command in TEMPLATE_COMMANDS:
+                self.handle_template_command(
+                    message,
+                    message.text_command,
+                    TEMPLATE_COMMANDS[message.text_command],
+
+                )
 
     def loop_for_messages(self):
         while True:
