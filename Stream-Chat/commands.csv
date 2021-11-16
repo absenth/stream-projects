@@ -1,0 +1,8 @@
+﻿Commands,Output
+!discord,Please join the {message.channel} Discord server https://discord.gg/44pEhPqS
+!so,"Check out {message.text_args[0]}, and thank them for visiting!"
+!project,"Currently, we have no idea what we are doing."
+!keyboard,Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/
+!repro,The source code for all of this is likely here: https://github.com/absenth/stream-projects
+!wrong,"@absenth762, you're doing it wrong... Stop doing it wrong!"
+!django,If FlyBoy were here he would love this.

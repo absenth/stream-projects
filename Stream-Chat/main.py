@@ -1,5 +1,6 @@
 import os
 import socket
+import pandas as pd
 from collections import namedtuple
 
 
@@ -18,6 +19,9 @@ Message = namedtuple(
 )
 
 
+FILE = 'commands.csv'
+
+
 class Bot:
     def __init__(self):
         self.irc_server = 'irc.twitch.tv'
@@ -25,7 +29,8 @@ class Bot:
         self.oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
         self.username = 'botsenth545'
         self.channels = ['absenth762']
-        # self.load_template_commands('.commands.csv') -- Not ready for this yet
+        # Testing
+        #self.channels = ['krazynez_2']
 
     def send_privmsg(self, channel, text):
         self.send_command(f'PRIVMSG #{channel} :{text}')
@@ -102,8 +107,10 @@ class Bot:
         )
         return message
 
-    def handle_template_command(self, message, text_command, template):
-        text = template.format(**{'message': message,})
+    def handle_template_command(self, message, template):
+        #text = template.format(**{'message': message,})
+        for i, m in enumerate(template):
+            text = m.format(**{'message': message,}) 
         self.send_privmsg(message.channel, text)
 
 
@@ -113,16 +120,26 @@ class Bot:
             return
 
         message = self.parse_message(received_msg)
-        print(f'> {message}')
+        #print(f'> {message}')
 
         if message.irc_command == 'PING':
             self.send_command('PONG :tmi.twitch.tv')
 
         if message.irc_command == 'PRIVMSG':
-            if message.text_command in TEMPLATE_COMMANDS:
+            if os.path.isfile(FILE):
+                df = pd.read_csv(FILE)
+                
+                for commands in pd.read_csv(FILE)['Commands']:
+                    if commands.replace(" ", "") in message:
+                        row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
+                        out = df['Output'][row]
+                        self.handle_template_command(
+                                message,
+                                out
+                        )
+            elif message.text_command in TEMPLATE_COMMANDS:
                 self.handle_template_command(
                     message,
-                    message.text_command,
                     TEMPLATE_COMMANDS[message.text_command],
 
                 )
