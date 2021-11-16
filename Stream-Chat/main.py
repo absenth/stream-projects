@@ -4,14 +4,14 @@ import pandas as pd
 from collections import namedtuple
 
 
-#TEMPLATE_COMMANDS = {
-#        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
-#        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
-#        '!project': 'Currently, we have no idea what we are doing.',
-#        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
-#        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
-#        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
-#}
+TEMPLATE_COMMANDS = {
+        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
+        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
+        '!project': 'Currently, we have no idea what we are doing.',
+        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
+        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
+        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
+}
 
 Message = namedtuple(
     'Message',
@@ -29,7 +29,8 @@ class Bot:
         self.oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
         self.username = 'botsenth545'
         self.channels = ['absenth762']
-        # self.load_template_commands('.commands.csv') -- Not ready for this yet
+        # Testing
+        #self.channels = ['krazynez_2']
 
     def send_privmsg(self, channel, text):
         self.send_command(f'PRIVMSG #{channel} :{text}')
@@ -107,7 +108,9 @@ class Bot:
         return message
 
     def handle_template_command(self, message, template):
-        text = template.format(**{'message': message,})
+        #text = template.format(**{'message': message,})
+        for i, m in enumerate(template):
+            text = m.format(**{'message': message,}) 
         self.send_privmsg(message.channel, text)
 
 
@@ -117,21 +120,23 @@ class Bot:
             return
 
         message = self.parse_message(received_msg)
-        print(f'> {message}')
+        #print(f'> {message}')
 
         if message.irc_command == 'PING':
             self.send_command('PONG :tmi.twitch.tv')
 
         if message.irc_command == 'PRIVMSG':
-            if os.isfile(FILE):
+            if os.path.isfile(FILE):
                 df = pd.read_csv(FILE)
                 
                 for commands in pd.read_csv(FILE)['Commands']:
-                    if message.replace(" ", "") is commands.replace(" ", ""):
-                        row = df.index[df['Commands'] == message.replace(" ", "")].tolist()
+                    if commands.replace(" ", "") in message:
+                        row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
+                        out = df['Output'][row]
                         self.handle_template_command(
                                 message,
-                                df['Output'][row]
+                                out
+                        )
             elif message.text_command in TEMPLATE_COMMANDS:
                 self.handle_template_command(
                     message,
