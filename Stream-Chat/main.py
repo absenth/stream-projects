@@ -29,8 +29,6 @@ class Bot:
         self.oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
         self.username = 'botsenth545'
         self.channels = ['absenth762']
-        # Testing
-        #self.channels = ['krazynez_2']
 
     def send_privmsg(self, channel, text):
         self.send_command(f'PRIVMSG #{channel} :{text}')
@@ -110,7 +108,7 @@ class Bot:
     def handle_template_command(self, message, template):
         #text = template.format(**{'message': message,})
         for i, m in enumerate(template):
-            text = m.format(**{'message': message,}) 
+            text = m.format(**{'message': message,})
         self.send_privmsg(message.channel, text)
 
 
@@ -128,7 +126,7 @@ class Bot:
         if message.irc_command == 'PRIVMSG':
             if os.path.isfile(FILE):
                 df = pd.read_csv(FILE)
-                
+
                 for commands in pd.read_csv(FILE)['Commands']:
                     if commands.replace(" ", "") in message:
                         row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
