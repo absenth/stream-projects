@@ -4,15 +4,6 @@ import pandas as pd
 from collections import namedtuple
 
 
-TEMPLATE_COMMANDS = {
-        '!discord': 'Please join the {message.channel} Discord server https://discord.gg/44pEhPqS',
-        '!so': 'Check out {message.text_args[0]}, and thank them for visiting!',
-        '!project': 'Currently, we have no idea what we are doing.',
-        '!keyboard': 'Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/',
-        '!repo': 'The source code for all of this is likely here: https://github.com/absenth/stream-projects',
-        '!wrong': "@absenth762, you're doing it wrong... Stop doing it wrong!",
-}
-
 Message = namedtuple(
     'Message',
     'prefix user channel irc_command irc_args text text_command text_args',
@@ -105,6 +96,7 @@ class Bot:
         )
         return message
 
+
     def handle_template_command(self, message, template):
         #text = template.format(**{'message': message,})
         for i, m in enumerate(template):
@@ -126,21 +118,29 @@ class Bot:
         if message.irc_command == 'PRIVMSG':
             if os.path.isfile(FILE):
                 df = pd.read_csv(FILE)
+                if message.text_command == '!commands':
+                    out = self.list_commands()
+                    self.send_privmsg(message.channel, out)
+                else:
+                    for commands in pd.read_csv(FILE)['Commands']:
+                        if commands.replace(" ", "") in message:
+                            row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
+                            out = df['Output'][row]
+                            self.handle_template_command(
+                                    message,
+                                    out
+                            )
 
-                for commands in pd.read_csv(FILE)['Commands']:
-                    if commands.replace(" ", "") in message:
-                        row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
-                        out = df['Output'][row]
-                        self.handle_template_command(
-                                message,
-                                out
-                        )
-            elif message.text_command in TEMPLATE_COMMANDS:
-                self.handle_template_command(
-                    message,
-                    TEMPLATE_COMMANDS[message.text_command],
+    def list_commands(self):
+        commands_list = []
+        if os.path.isfile(FILE):
+            df = pd.read_csv(FILE)
+            commands = df[df.columns[0]]
+            for cmd in commands:
+                commands_list.append(cmd)
+                # ensure output is joined into a single line
+            return commands_list
 
-                )
 
     def loop_for_messages(self):
         while True:
