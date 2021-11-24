@@ -181,19 +181,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-'''
-NOTES --
-
-https://tmi.twitch.tv/group/user/absenth762/chatters
-json: viewers: 'this lists viewers in chat'
-chatters = request.get(url).json()['chatters']
-when flyboy1565 is here.
-!django should return
-'Look! Flyboy another Django friend!
-json: viewers: 'this lists viewers in chat'
-chatters = request.get(url).json()['chatters']
-when flyboy1565 is here.
-!django should return
-'Look! Flyboy another Django friend!
-'''
