@@ -136,7 +136,6 @@ class Bot:
                     out = self.list_commands()
                     self.send_privmsg(message.channel, out)
                 elif message.text_command == '!weather':
-                    print(message.text_args)
                     out = weather.weather_lookup(message.text_args)
                     self.send_privmsg(message.channel, out)
                 elif message.text_command == '!django':

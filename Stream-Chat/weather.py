@@ -5,8 +5,6 @@ import os
 
 def weather_lookup(city):
     city_name = city[0]
-    print(city_name)
-    print(type(city_name))
     api_key = os.getenv('OPENWEATHERMAP_API')
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name
