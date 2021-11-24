@@ -1,6 +1,10 @@
 import os
 import socket
 import pandas as pd
+import json
+import urllib
+import requests
+import weather
 from collections import namedtuple
 
 
@@ -104,6 +108,16 @@ class Bot:
         self.send_privmsg(message.channel, text)
 
 
+    def detect_flyboy(self):
+        url = 'https://tmi.twitch.tv/group/user/absenth762/chatters'
+        chatters = requests.get(url).json()['chatters']
+        viewers = chatters['viewers']
+
+        for viewer in viewers:
+            if viewer == 'flyboy1565':
+                return(True)
+
+
     def handle_message(self, received_msg):
 
         if len(received_msg) == 0:
@@ -121,6 +135,17 @@ class Bot:
                 if message.text_command == '!commands':
                     out = self.list_commands()
                     self.send_privmsg(message.channel, out)
+                elif message.text_command == '!weather':
+                    print(message.text_args)
+                    out = weather.weather_lookup(message.text_args)
+                    self.send_privmsg(message.channel, out)
+                elif message.text_command == '!django':
+                    if self.detect_flyboy():
+                        out = 'Look!  @flyboy1565 found a friend!'
+                        self.send_privmsg(message.channel, out)
+                    else:
+                        out = 'If @flyboy1565 was here, he would love this.'
+                        self.send_privmsg(message.channel, out)
                 else:
                     for commands in pd.read_csv(FILE)['Commands']:
                         if commands.replace(" ", "") in message:
