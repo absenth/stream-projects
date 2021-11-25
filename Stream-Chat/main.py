@@ -5,6 +5,7 @@ import json
 import urllib
 import requests
 import weather
+import norris
 from collections import namedtuple
 
 
@@ -135,8 +136,11 @@ class Bot:
                 if message.text_command == '!commands':
                     out = self.list_commands()
                     self.send_privmsg(message.channel, out)
-                elif message.text_command == '!weather':
+                elif message.text_command == '!weather': ## Fix this to require an argument.
                     out = weather.weather_lookup(message.text_args)
+                    self.send_privmsg(message.channel, out)
+                elif message.text_command == '!joke':
+                    out = norris.norris_joke()
                     self.send_privmsg(message.channel, out)
                 elif message.text_command == '!django':
                     if self.detect_flyboy():
