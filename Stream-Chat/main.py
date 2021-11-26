@@ -6,6 +6,7 @@ import urllib
 import requests
 import weather
 import norris
+import catfacts
 from collections import namedtuple
 
 
@@ -136,8 +137,15 @@ class Bot:
                 if message.text_command == '!commands':
                     out = self.list_commands()
                     self.send_privmsg(message.channel, out)
-                elif message.text_command == '!weather': ## Fix this to require an argument.
-                    out = weather.weather_lookup(message.text_args)
+                elif message.text_command == '!weather':
+                    if message.text_args:
+                        out = weather.weather_lookup(message.text_args)
+                        self.send_privmsg(message.channel, out)
+                    else:
+                        out = "You must add a city or zip to use this command"
+                        self.send_privmsg(message.channel, out)
+                elif message.text_command == '!catfax':
+                    out = catfacts.cat_fact()
                     self.send_privmsg(message.channel, out)
                 elif message.text_command == '!joke':
                     out = norris.norris_joke()
