@@ -140,10 +140,9 @@ class Bot:
                 elif message.text_command == '!weather':
                     if message.text_args:
                         out = weather.weather_lookup(message.text_args)
-                        self.send_privmsg(message.channel, out)
                     else:
                         out = "You must add a city or zip to use this command"
-                        self.send_privmsg(message.channel, out)
+                    self.send_privmsg(message.channel, out)
                 elif message.text_command == '!catfax':
                     out = catfacts.cat_fact()
                     self.send_privmsg(message.channel, out)
@@ -153,10 +152,9 @@ class Bot:
                 elif message.text_command == '!django':
                     if self.detect_flyboy():
                         out = 'Look!  @flyboy1565 found a friend!'
-                        self.send_privmsg(message.channel, out)
                     else:
                         out = 'If @flyboy1565 was here, he would love this.'
-                        self.send_privmsg(message.channel, out)
+                    self.send_privmsg(message.channel, out)
                 else:
                     for commands in pd.read_csv(FILE)['Commands']:
                         if commands.replace(" ", "") in message:
