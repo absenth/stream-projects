@@ -1,16 +1,24 @@
 import os
 import urllib
 import requests
+import json
+from pprint import pprint
 
-client_id = os.getenv('TWITCH_HELPER_CLIENT_ID')
-client_secret = os.getenv('TWITCH_HELPER_CLIENT_SECRET')
+base_url = os.getenv('NGROK_TAU_URL')
+query_path = 'api/v1/twitch-events'
+#query_path = 'api/v1/heartbeat'
+tau_token = os.getenv('TAU_TOKEN')
 
+headers = {
+        "Authorization": f"Token {tau_token}",
+}
 
-'''
-https://www.therelicans.com/wyhaines/twitch-eventsub-the-direct-approach-to-getting-started-with-it-3pia
-we want to use eventsub, it's the future of Twitch API interactions.
-https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#stream-online
-will require a real URL & SSL key for Twitch to POST events once subscribed.
-https://www.youtube.com/watch?v=JTE77t0j4Fc&t=252s - example tutorial maybe?
-https://github.com/bsquidwrd/ubiquitous-adventure
-'''
+def main():
+    # FIXME -- determine how to send the 'Authorization: Token' header
+    response = requests.get(f"{base_url}/{query_path}", headers=headers)
+    x = response.json()
+    stream_online = x["results"][0]["event_type"]
+    pprint(stream_online)
+
+if __name__ == '__main__':
+    main()
