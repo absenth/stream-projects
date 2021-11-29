@@ -1,6 +1,8 @@
 import discord
 import os
 import random
+import asyncio
+from websockets import connect
 
 user_token = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
