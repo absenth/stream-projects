@@ -14,7 +14,6 @@ headers = {
 }
 
 def main():
-    # FIXME -- determine how to send the 'Authorization: Token' header
     response = requests.get(f"{base_url}/{query_path}", headers=headers)
     x = response.json()
     stream_online = x["results"][0]["event_type"]

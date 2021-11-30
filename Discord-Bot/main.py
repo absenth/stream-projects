@@ -2,7 +2,8 @@ import discord
 import os
 import random
 import asyncio
-from websockets import connect
+import websockets
+import json
 
 user_token = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
@@ -32,5 +33,6 @@ async def on_message(message):
     elif user_message.lower() == 'goodnight':
         await message.channel.send('Sleep is an inappropriate substitute for caffeine!')
         return
+
 
 client.run(user_token)

@@ -1,7 +1,6 @@
 ﻿Commands,Output
 !discord,Please join the {message.channel} Discord server https://discord.gg/44pEhPqS
 !so,"Check out {message.text_args[0]} and thank them for visiting!"
-!project,"Currently, we are working on a person detecting computer vision project: https://github.com/absenth/varselsignal"
 !keyboard,Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/
 !repo,The source code for all of this is likely here: https://github.com/absenth/stream-projects
 !wrong,"@absenth762, you're doing it wrong... Stop doing it wrong!"
@@ -13,8 +12,10 @@
 !python, @absenth762 Learn to Python Noob!  (see also !wrong)
 !badbot, Tell Anders I'm not bad... just misunderstood
 !coffee, @Absenth762 takes his coffee black... And his tea in the harbor
-!dayone,First commit for this project was on 2021-11-15
+!dayone, @Absenth762 has streamed every week day since 2021-Nov-08
 !joke,
 !django,
 !weather,
 !catfax,
+!tau,"TAU - the Twitch API Unifier is a project from @finitesingularity - check it out https://github.com/Team-TAU/tau"
+!project,"Currently, we are working on connecting a Twitch API Unifier (see also !tau) to Discord: https://github.com/absenth/stream-projects/tree/main/Discord-Bot"
