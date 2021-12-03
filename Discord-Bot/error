@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "main.py", line 44, in <module>
+    asyncio.run(run_all()) # no need to explicitly get the event loop past 3.7 or 3.8
+  File "/usr/local/lib/python3.8/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/local/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "main.py", line 40, in run_all
+    notification_channel = await client.fetch_channel(707230298714275872)
+  File "/usr/local/lib/python3.8/site-packages/discord/client.py", line 1459, in fetch_channel
+    data = await self.http.get_channel(channel_id)
+  File "/usr/local/lib/python3.8/site-packages/discord/http.py", line 192, in request
+    async with self.__session.request(method, url, **kwargs) as r:
+AttributeError: 'NoneType' object has no attribute 'request'
+sys:1: RuntimeWarning: coroutine 'Client.start' was never awaited
