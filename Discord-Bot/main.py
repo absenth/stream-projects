@@ -37,12 +37,15 @@ async def on_message(message):
 
 
 @client.event
-async def on_twitch():  # FIXME -- this function doesn't appear to fire
+async def ():  # FIXME -- this function doesn't appear to fire
     channel = 'announcements'
+    is_live = False
     while True:
-        if check_stream():
-            await message.channel.send('Absenth762 is live!')
-            return
+        if is_live == False:
+            if check_stream():
+                await message.channel.send('Absenth762 is live!')
+                is_live = True
+                return
 
 
 def check_stream(): # FIXME -- This function likely works, but I don't know for sure
