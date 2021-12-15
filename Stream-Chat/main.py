@@ -7,6 +7,7 @@ import requests
 import weather
 import norris
 import catfacts
+from typing import List
 from collections import namedtuple
 
 
@@ -16,16 +17,22 @@ Message = namedtuple(
 )
 
 
-FILE = 'commands.csv'
-
-
 class Bot:
-    def __init__(self):
-        self.irc_server = 'irc.twitch.tv'
-        self.irc_port = 6667
-        self.oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
-        self.username = 'botsenth545'
-        self.channels = ['absenth762']
+    def __init__(
+        self,
+        channels: List[str],
+        file_path: str,
+        irc_port: int,
+        irc_server: str,
+        oauth_token: str,
+        username: str,
+    ):
+        self.channels = channels
+        self.file_path = file_path
+        self.irc_port = irc_port
+        self.irc_server = irc_server
+        self.oauth_token = oauth_token
+        self.username = username
 
     def send_privmsg(self, channel, text):
         self.send_command(f'PRIVMSG #{channel} :{text}')
@@ -132,8 +139,8 @@ class Bot:
             self.send_command('PONG :tmi.twitch.tv')
 
         if message.irc_command == 'PRIVMSG':
-            if os.path.isfile(FILE):
-                df = pd.read_csv(FILE)
+            if os.path.isfile(self.file_name):
+                df = pd.read_csv(self.file_name)
                 if message.text_command == '!commands':
                     out = self.list_commands()
                     self.send_privmsg(message.channel, out)
@@ -156,7 +163,7 @@ class Bot:
                         out = 'If @flyboy1565 was here, he would love this.'
                     self.send_privmsg(message.channel, out)
                 else:
-                    for commands in pd.read_csv(FILE)['Commands']:
+                    for commands in pd.read_csv(self.file_name)['Commands']:
                         if commands.replace(" ", "") in message:
                             row = df.index[df['Commands'] == commands.replace(" ", "")].tolist()
                             out = df['Output'][row]
@@ -167,8 +174,8 @@ class Bot:
 
     def list_commands(self):
         commands_list = []
-        if os.path.isfile(FILE):
-            df = pd.read_csv(FILE)
+        if os.path.isfile(self.file_name):
+            df = pd.read_csv(self.file_name)
             commands = df[df.columns[0]]
             for cmd in commands:
                 commands_list.append(cmd)
@@ -184,7 +191,20 @@ class Bot:
 
 
 def main():
-    bot = Bot()
+    channels = ['absenth762']
+    file_path = 'commands.csv'
+    irc_port = 6667
+    irc_server = 'irc.twitch.tv'
+    oauth_token = os.getenv('TWITCH_OAUTH_TOKEN')
+    username = 'botsenth545'
+    bot = Bot(
+        channels,
+        file_path,
+        irc_port,
+        irc_server,
+        oauth_token,
+        username,
+    )
     bot.connect()
 
 
