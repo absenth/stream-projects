@@ -1,5 +1,5 @@
 ﻿Commands,Output
-!discord,Please join the {message.channel} Discord server https://discord.gg/44pEhPqS
+!discord,Please join the {message.channel} Discord server https://discord.gg/XfAMaQqMKH
 !so,"Check out {message.text_args[0]} and thank them for visiting!"
 !keyboard,Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/
 !repo,The source code for all of this is likely here: https://github.com/absenth/stream-projects
