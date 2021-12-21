@@ -37,7 +37,7 @@ async def on_message(message):
 
 
 @client.event
-async def ():  # FIXME -- this function doesn't appear to fire
+async def announce_live():  # FIXME -- this function doesn't appear to fire
     channel = 'announcements'
     is_live = False
     while True:
