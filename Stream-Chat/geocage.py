@@ -11,7 +11,6 @@ def geocode_lookup(city):
     coords = (response['features'][0]['geometry']['coordinates'])
     lat=coords[1]
     lng=coords[0]
-    print(response['features'])
     return(lat,lng)
 
 

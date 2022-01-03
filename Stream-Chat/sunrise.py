@@ -15,7 +15,7 @@ def sunrise_lookup(lat,lng):
     sunrise = (response['results']['sunrise'])
     sunset = (response['results']['sunset'])
     day_length = (response['results']['day_length'])
-    out = (f"sunrise: {sunrise} | sunset: {sunset} | length of day: {day_length} | powered by https://sunrise-sunset.org")
+    out = (f"sunrise: {sunrise} utc | sunset: {sunset} utc | length of day: {day_length} | powered by https://sunrise-sunset.org")
     return out
 
 if __name__ == "__main__":
