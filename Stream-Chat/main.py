@@ -7,6 +7,8 @@ import requests
 import weather
 import norris
 import catfacts
+import sunrise
+import geocage
 from collections import namedtuple
 
 
@@ -155,6 +157,14 @@ class Bot:
                     else:
                         out = 'If @flyboy1565 was here, he would love this.'
                     self.send_privmsg(message.channel, out)
+                elif message.text_command == '!sunrise':
+                    if message.text_args:
+                        lat,lon = geocage.geocode_lookup(message.text_args)
+                        out = sunrise.sunrise_lookup(lat,lon)
+                    else:
+                        out = "You must add a city or zip to use this command"
+                    self.send_privmsg(message.channel, out)
+
                 else:
                     for commands in pd.read_csv(FILE)['Commands']:
                         if commands.replace(" ", "") in message:

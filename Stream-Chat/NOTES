@@ -1,0 +1,7 @@
+Sunrise/Sunset
+ * https://opencagedata.com/api - to convert place to lat/lon
+ * https://sunrise-sunset.org/api - to get sunrise and sunset time based on lat/lon
+
+
+https://stackoverflow.com/questions/19615350/calculate-sunrise-and-sunset-times-for-a-given-gps-coordinate-within-postgresql
+see also https://github.com/SatAgro/suntime/blob/master/suntime/suntime.py

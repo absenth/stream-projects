@@ -7,7 +7,7 @@ def weather_lookup(city):
     city_name = city[0]
     api_key = os.getenv('OPENWEATHERMAP_API')
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
-    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    complete_url = f"{base_url}appid={api_key}&q={city_name}"
     response = requests.get(complete_url)
     x = response.json()
     if x["cod"] != "404":
