@@ -1,5 +1,4 @@
 import requests
-import json
 import os
 
 
@@ -17,13 +16,11 @@ def weather_lookup(city):
         fahrenheit_temperature = current_temperature * 1.8 - 459.67
         format_fahrenheit = "{:.2f}".format(fahrenheit_temperature)
         format_celcius = "{:.2f}".format(celcius_temperature)
-        current_pressure = y["pressure"]
-        current_humidity = y["humidity"]
         z = x["weather"]
         weather_description = z[0]["description"]
 
         weather=(f"Temperature {format_celcius}c, {format_fahrenheit}f, Description = {weather_description}")
         return weather
     else:
-        response="City Not Found"
+        response = "City Not Found"
         return response

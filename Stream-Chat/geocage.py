@@ -1,5 +1,4 @@
 import requests
-import json
 import os
 
 
@@ -9,11 +8,12 @@ def geocode_lookup(city):
     complete_url = f"{base_url}&q={city}&key={api_key}&limit=1"
     response = requests.get(complete_url).json()
     coords = (response['features'][0]['geometry']['coordinates'])
-    lat=coords[1]
-    lng=coords[0]
-    return(lat,lng)
+    utc_offset = (response['features'][0]['properties']['annotations']['timezone']['offset_string'])
+    lat = coords[1]
+    lng = coords[0]
+    return lat, lng, utc_offset
 
 
 if __name__ == "__main__":
-    lat,lng = geocode_lookup("austin")
-    print(f"Lat: {lat}  Lng: {lng}")
+    lat, lng, utc_offset = geocode_lookup("madrid")
+    print(f"Lat: {lat}  Lng: {lng}  utc_offset: {utc_offset}")

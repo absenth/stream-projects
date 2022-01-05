@@ -159,8 +159,8 @@ class Bot:
                     self.send_privmsg(message.channel, out)
                 elif message.text_command == '!sunrise':
                     if message.text_args:
-                        lat,lon = geocage.geocode_lookup(message.text_args)
-                        out = sunrise.sunrise_lookup(lat,lon)
+                        lat,lon,utc_offset = geocage.geocode_lookup(message.text_args)
+                        out = sunrise.sunrise_lookup(lat,lon,utc_offset)
                     else:
                         out = "You must add a city or zip to use this command"
                     self.send_privmsg(message.channel, out)
