@@ -1,17 +1,24 @@
 #include <stdio.h>
 
 int main(void) {
-    for ( int a = 1; a > 100001; a++ ) {
-        if( a % 15 == 0 ) {
-            printf("fizzbuzz");
-        } else if( a % 3 == 0 ) {
-            printf("fizz");
-        } else if( a % 5 == 0 ) {
-            printf("buzz");
+
+    for (int i = 1; i < 100001; i++) {
+
+        if(i % 15 == 0) {
+            printf("fizzbuzz\n");
+
+        } else if(i % 3 == 0) {
+            printf("fizz\n");
+
+        } else if(i % 5 == 0) {
+            printf("buzz\n");
+
         } else {
-            printf("%a", a);
+            printf("%d\n", i);
+
         }
+
     }
 
-    return 0;
+    return(0);
 }
