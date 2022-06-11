@@ -1,22 +1,27 @@
 ﻿Commands,Output
 !discord,Please join the {message.channel} Discord server https://discord.gg/XfAMaQqMKH
 !so,"Check out {message.text_args[0]} and thank them for visiting!"
-!keyboard,Absenth762 is using an ErgodoxEZ with C3 Equalz Kiwi switches. https://ergodox-ez.com/
-!repo,The source code for all of this is likely here: https://github.com/absenth/stream-projects
+!keyboard,Absenth762 is using an ErgodoxEZ with TeeCee Purple Panda switches. https://ergodox-ez.com/
+!repo,The source code for all of this is likely here: https://github.com/absenth/agridies-golang
 !wrong,"@absenth762, you're doing it wrong... Stop doing it wrong!"
 !homerow,Absenth uses Home Row Mods - Check them out https://precondition.github.io/home-row-mods
 !mitch,Hey go check out https://twitch.tv/mitchsworkshop - he inspired me to be here show him some love
-!schedule,I am trying to stream every weekday.  Either before 9a or after 6p US Central time
-!os,uname -a FreeBSD bartmoss 13.0-RELEASE FreeBSD 13.0-RELEASE
+!schedule,Monday and Thursday evenings at 7:30pm Central time in the US
+!os,Absenth is running Fedora 36 on his desktop and laptop.
 !sleep, Sleep is a totally inappropriate substitute for caffeine!
 !python, @absenth762 Learn to Python Noob!  (see also !wrong)
+!golang, @absenth762 is even worse at Golang than !python (see also !wrong)
 !badbot, Tell Anders I'm not bad... just misunderstood
 !coffee, @Absenth762 takes his coffee black... And his tea in the harbor
-!dayone, @Absenth762 Started his 100 Consecutive Weekday Streams on 2022-01-01
+!dayone, @Absenth762 Started streaming regularly on June 2, 2022
+!tau,"TAU - the Twitch API Unifier is a project from @finitesingularity - check it out https://github.com/Team-TAU/tau"
+!project,"Agridies Field Day Logger - https://github.com/absenth/agridies-golang"
+!agridies,"Agri (Latin for Field) Dies (Latin for day) so Agridies is literally Fielday (see also !fielday)
+!fieldday,"The largest annual on-the-air ham radio event in the US and Canada - https://www.arrl.org/field-day"
+!hamradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
+!amateurradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
 !joke,
 !django,
 !weather,
 !catfax,
 !sunrise,
-!tau,"TAU - the Twitch API Unifier is a project from @finitesingularity - check it out https://github.com/Team-TAU/tau"
-!project,"Revisiting My Ham Radio Logging Software - ReactJS Noob"
