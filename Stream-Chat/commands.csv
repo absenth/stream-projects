@@ -7,7 +7,7 @@
 !homerow,Absenth uses Home Row Mods - Check them out https://precondition.github.io/home-row-mods
 !mitch,Hey go check out https://twitch.tv/mitchsworkshop - he inspired me to be here show him some love
 !schedule,Monday and Thursday evenings at 7:30pm Central time in the US
-!os,Absenth is running Fedora 36 on his desktop and laptop.
+!os,Absenth is running Ubuntu 22.04 on the desktop and Fedora 36 on his laptop.
 !sleep,Sleep is a totally inappropriate substitute for caffeine!
 !python,@absenth762 Learn to Python Noob!  (see also !wrong)
 !golang,@absenth762 is even worse at Golang than !python (see also !wrong)
@@ -23,6 +23,10 @@
 !meetup,"https://www.meetup.com/austin-metro-technical-professionals-meetup-group/"
 !techsummit,"https://www.meetup.com/austin-metro-technical-professionals-meetup-group/"
 !bitmasher,"Be sure to check out https://twitch.tv/bitmasher"
+!gottem,"@absenth just Gottem"
+!ifconfig,What the hell is ifconfig?  It's ip addr noob!
+!ip,My IP address is 172.16.0.192
+!wwmd,"not stream, which is clearly not what Absenth is doing.  See also !gottem"
 !joke,
 !django,
 !weather,
