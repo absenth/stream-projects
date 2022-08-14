@@ -1,32 +1,24 @@
 ﻿Commands,Output
 !discord,Please join the {message.channel} Discord server https://discord.gg/XfAMaQqMKH
-!so,"Check out {message.text_args[0]} and thank them for visiting!"
+!so,"Check out https://twitch.tv/{message.text_args[0]} and thank them for visiting!"
 !keyboard,Absenth762 is using an ErgodoxEZ with TeeCee Purple Panda switches. https://ergodox-ez.com/
-!repo,The source code for all of this is likely here: https://github.com/absenth/agridies-golang
-!wrong,"@absenth762, you're doing it wrong... Stop doing it wrong!"
+!wrong,"You're doing it wrong... Stop doing it wrong!"
 !homerow,Absenth uses Home Row Mods - Check them out https://precondition.github.io/home-row-mods
-!mitch,Hey go check out https://twitch.tv/mitchsworkshop - he inspired me to be here show him some love
-!schedule,Monday and Thursday evenings at 7:30pm Central time in the US
-!os,Absenth is running Ubuntu 22.04 on the desktop and Fedora 36 on his laptop.
+!mitch,Hey go check out https://twitch.tv/mitchsworkshop - he inspired me to be here show him some love -- See Also !wwmd
+!schedule,Monday or Tuesday and Thursday evenings at 7:30pm Central time in the US
+!os,Absenth is running EndevourOS - an Arch Linux based distro.
 !sleep,Sleep is a totally inappropriate substitute for caffeine!
-!python,@absenth762 Learn to Python Noob!  (see also !wrong)
-!golang,@absenth762 is even worse at Golang than !python (see also !wrong)
 !badbot,Tell Anders I'm not bad... just misunderstood
 !coffee,"@Absenth762 takes his coffee black... And his tea in the harbor"
-!dayone,"@Absenth762 Started streaming regularly on June 2, 2022"
 !tau,"TAU - the Twitch API Unifier is a project from @finitesingularity - check it out https://github.com/Team-TAU/tau"
 !project,"Agridies Field Day Logger - https://github.com/absenth/agridies-golang"
-!agridies,"Agri (Latin for Field) Dies (Latin for day) so Agridies is literally Fielday (see also !fielday)"
+!agridies,"Agri (Latin for Field) Dies (Latin for day) so Agridies is literally Fielday (see also !fielday) https://github.com/absenth/agridies-golang"
 !fieldday,"The largest annual on-the-air ham radio event in the US and Canada - https://www.arrl.org/field-day"
 !hamradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
 !amateurradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
 !meetup,"https://www.meetup.com/austin-metro-technical-professionals-meetup-group/"
-!techsummit,"https://www.meetup.com/austin-metro-technical-professionals-meetup-group/"
-!bitmasher,"Be sure to check out https://twitch.tv/bitmasher"
-!gottem,"@absenth just Gottem"
-!ifconfig,What the hell is ifconfig?  It's ip addr noob!
-!ip,My IP address is 172.16.0.192
-!wwmd,"not stream, which is clearly not what Absenth is doing.  See also !gottem"
+!bitmasher,"Be sure to check out friend of the stream https://twitch.tv/bitmasher"
+!today,Learning Golang - Coding a deck of cards
 !joke,
 !django,
 !weather,
