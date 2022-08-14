@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for n in $(seq 100000)
+for n in $(seq 15000001)
 do
     if (( $n % 15 == 0 )); then
         echo "fizzbuzz"

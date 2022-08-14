@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+ hyperfine "awk -v n=15000000 -f awk/fizzbuzzNoDiv.awk >/dev/null"
+ hyperfine "awk -v n=15000000 -f awk/fizzbuzz.awk >/dev/null"
+ hyperfine "c/fizzbuzz >/dev/null"
+ hyperfine "golang/fizzbuzz >/dev/null"
+ hyperfine "java java/fizzbuzz.java >/dev/null"
+ hyperfine "perl perl/fizzbuzz.pl  >/dev/null"
+ hyperfine "python3.10 python/fizzbuzz.py  >/dev/null"
+ hyperfine "rust/fizzbuzz  >/dev/null"
+ hyperfine "rust/fizzbuzz2  >/dev/null"
+ hyperfine "rust/fizzbuzz4  >/dev/null"
+ hyperfine "/bin/zsh bash/fizzbuzz.bash  >/dev/null"
