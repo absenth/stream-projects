@@ -1,8 +1,6 @@
 import os
 import socket
 import pandas as pd
-import json
-import urllib
 import requests
 import weather
 import norris
@@ -10,6 +8,7 @@ import catfacts
 import sunrise
 import geocage
 from collections import namedtuple
+from dotenv import load_dotenv
 
 
 Message = namedtuple(
@@ -19,6 +18,9 @@ Message = namedtuple(
 
 
 FILE = 'commands.csv'
+
+
+
 
 
 class Bot:
@@ -194,6 +196,7 @@ class Bot:
 
 
 def main():
+    load_dotenv()
     bot = Bot()
     bot.connect()
 
