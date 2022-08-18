@@ -5,20 +5,18 @@
 !wrong,"You're doing it wrong... Stop doing it wrong!"
 !homerow,Absenth uses Home Row Mods - Check them out https://precondition.github.io/home-row-mods
 !mitch,Hey go check out https://twitch.tv/mitchsworkshop - he inspired me to be here show him some love -- See Also !wwmd
-!schedule,Monday or Tuesday and Thursday evenings at 7:30pm Central time in the US
-!os,Absenth is running EndevourOS - an Arch Linux based distro.
+!schedule,I try to stream on Monday or Tuesday and Thursday evenings at 7:30pm Central time in the US
 !sleep,Sleep is a totally inappropriate substitute for caffeine!
 !badbot,Tell Anders I'm not bad... just misunderstood
 !coffee,"@Absenth762 takes his coffee black... And his tea in the harbor"
-!tau,"TAU - the Twitch API Unifier is a project from @finitesingularity - check it out https://github.com/Team-TAU/tau"
-!project,"Agridies Field Day Logger - https://github.com/absenth/agridies-golang"
+!project,"Agridies Field Day Logger - https://github.com/absenth/zeblog_fd/tree/agridies"
 !agridies,"Agri (Latin for Field) Dies (Latin for day) so Agridies is literally Fielday (see also !fielday) https://github.com/absenth/agridies-golang"
 !fieldday,"The largest annual on-the-air ham radio event in the US and Canada - https://www.arrl.org/field-day"
 !hamradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
 !amateurradio,"Amateur Radio (ham radio) is a popular hobby and service that brings people, electronics and communication together. People use ham radio to talk across town, around the world, or even into space, all without the Internet or cell phones. It's fun, social, educational, and can be a lifeline during times of need. -- http://arrl.org/what-is-ham-radio"
 !meetup,"https://www.meetup.com/austin-metro-technical-professionals-meetup-group/"
 !bitmasher,"Be sure to check out friend of the stream https://twitch.tv/bitmasher"
-!today,Learning Golang - Coding a deck of cards
+!today,Learning Django and working on our Ham Radio field day logging program
 !joke,
 !django,
 !weather,
