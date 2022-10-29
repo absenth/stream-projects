@@ -1,0 +1,21 @@
+#+title: Project ToDo List:
+
+* Functions and Commands *
+- weather command
+  https://github.com/briandowns/openweathermap
+- CRUD Commands
+  - NewCommand
+  - ListCommands
+  - DeleteCommand
+  - UpdateCommand
+  - CRUD Commands should pull from some kind of DB (or csv)
+- Dog API - https://thedogapi.com/ - post photo of cute dogs on the stream
+  This will require OBS Webhook interfact maybe?
+- Live - I'd like to be able to execute `!live` and have it post to various discord
+  webhook URLs to announce my stream status. https://github.com/gtuk/discordwebhook
+
+
+* Technologies
+ - https://github.com/Adeithe/go-twitch/blob/master/.examples/getusers/main.go
+ - https://github.com/Adeithe/go-twitch
+ - https://github.com/gtuk/discordwebhook
