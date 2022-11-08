@@ -86,25 +86,26 @@ func main() {
 		}
 
 		Addtrigger(db, cmd.ArgsToString())
-		myBot.Reply(msg, "I have added the %s command", cmd.ArgsToString())
+		myBot.Reply(msg, fmt.Sprintf("I have added the %s command", cmd.ArgsToString()))
 	})
 
 	myBot.Start() // blocking operation
 }
 
-func Addtrigger(db, trigger string, response string) string {
-	statement, _ = db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
-	return Printf("The %s command has been added", trigger)
-}
-
-func Deltrigger(db, trigger string) string {
-	statement, err := db.Prepare("delete from books where bottrigger=?")
+func Addtrigger(db *sql.DB, trigger string) string {
+	statement, _ := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
 	statement.Exec(trigger)
-	return Printf("Successfully deleted the %s Command", trigger)
+	return fmt.Printf("The command has been added")
 }
 
-func Updatetrigger(db, trigger string, response string) string {
-	statement, _ = db.Prepare("update commands set botresponse=? where bottrigger=?")
-	statement.Exec(response, trigger)
-	return Printf("Successfully updated the %s command", trigger)
+func Deltrigger(db *sql.DB, trigger string) string {
+	statement, _ := db.Prepare("delete from books where bottrigger=?")
+	statement.Exec(trigger)
+	return fmt.Printf("Successfully deleted the Command")
+}
+
+func Updatetrigger(db *sql.DB, trigger string) string {
+	statement, _ := db.Prepare("update commands set botresponse=? where bottrigger=?")
+	statement.Exec(trigger)
+	return fmt.Printf("Successfully updated the command")
 }
