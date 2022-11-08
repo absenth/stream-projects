@@ -93,19 +93,37 @@ func main() {
 }
 
 func Addtrigger(db *sql.DB, trigger string) string {
-	statement, _ := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
+	statement, err := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	statement.Exec(trigger)
-	return fmt.Printf("The command has been added")
+	response := ("Sucessfully created the command")
+	return response
 }
 
 func Deltrigger(db *sql.DB, trigger string) string {
-	statement, _ := db.Prepare("delete from books where bottrigger=?")
+	statement, err := db.Prepare("delete from books where bottrigger=?")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	statement.Exec(trigger)
-	return fmt.Printf("Successfully deleted the Command")
+	response := ("Sucessfully deleted the command")
+	return response
 }
 
 func Updatetrigger(db *sql.DB, trigger string) string {
-	statement, _ := db.Prepare("update commands set botresponse=? where bottrigger=?")
+	statement, err := db.Prepare("update commands set botresponse=? where bottrigger=?")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	statement.Exec(trigger)
-	return fmt.Printf("Successfully updated the command")
+	response := ("Successfully updated the command")
+	return response
 }
