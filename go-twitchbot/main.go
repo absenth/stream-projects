@@ -23,13 +23,13 @@ type Twitchcommand struct {
 
 func main() {
 	// init database
-	db, err := sql.Open("sqlite3", "textcommands.db")
-	if err != nil {
-		log.Println(err)
+	db, errDB := sql.Open("sqlite3", "textcommands.db")
+	if errDB != nil {
+		log.Println(errDB)
 	}
 
-	statement, err := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, bottrigger VARCHAR(64), botresponse VARCHAR(64) )")
-	if err != nil {
+	statement, errDB := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, bottrigger VARCHAR(64), botresponse VARCHAR(64) )")
+	if errDB != nil {
 		log.Println("Error in creating table")
 	} else {
 		log.Println("Successfully created the commands table")
