@@ -96,6 +96,7 @@ func main() {
 func Addtrigger(db *sql.DB, trigger string) string {
 	split := strings.Split(trigger, " ")
 	btrigger, bresponse := split[0], split[1:]
+	bresponse2 := strings.Join(bresponse, " ")
 
 	statement, err := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
 
@@ -103,7 +104,12 @@ func Addtrigger(db *sql.DB, trigger string) string {
 		log.Fatal("Error loading .env file")
 	}
 
-	statement.Exec(btrigger, bresponse)
+	_, err = statement.Exec(btrigger, bresponse2)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	response := ("Sucessfully created the command")
 	return response
 }
