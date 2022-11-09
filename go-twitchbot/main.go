@@ -13,6 +13,7 @@ import (
 	nj "go-twitchbot/commands/norris"
 	"log"
 	"os"
+	"strings"
 )
 
 type Twitchcommand struct {
@@ -93,13 +94,16 @@ func main() {
 }
 
 func Addtrigger(db *sql.DB, trigger string) string {
+	split := strings.Split(trigger, " ")
+	btrigger, bresponse := split[0], split[1:]
+
 	statement, err := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
 
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	statement.Exec(trigger)
+	statement.Exec(btrigger, bresponse)
 	response := ("Sucessfully created the command")
 	return response
 }
