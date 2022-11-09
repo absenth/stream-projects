@@ -90,6 +90,26 @@ func main() {
 		myBot.Reply(msg, fmt.Sprintf("I have added the %s command", cmd.ArgsToString()))
 	})
 
+	myBot.AddCommand("delcommand", func(cmd chatbot.Command, msg twitch.PrivateMessage) {
+		if !chatbot.IsBroadcaster(msg.User) {
+			myBot.Reply(msg, "Only Absenth762 can remove commands.")
+			return
+		}
+
+		Deltrigger(db, cmd.ArgsToString())
+		myBot.Reply(msg, fmt.Sprintf("I have removed the %s command", cmd.ArgsToString()))
+	})
+
+	myBot.AddCommand("updatecommand", func(cmd chatbot.Command, msg twitch.PrivateMessage) {
+		if !chatbot.IsBroadcaster(msg.User) {
+			myBot.Reply(msg, "Only Absenth762 can update commands.")
+			return
+		}
+
+		Updatetrigger(db, cmd.ArgsToString())
+		myBot.Reply(msg, fmt.Sprintf("I have updated the %s command", cmd.ArgsToString()))
+	})
+
 	myBot.Start() // blocking operation
 }
 
@@ -101,7 +121,7 @@ func Addtrigger(db *sql.DB, trigger string) string {
 	statement, err := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal(err)
 	}
 
 	_, err = statement.Exec(btrigger, bresponse2)
@@ -115,25 +135,40 @@ func Addtrigger(db *sql.DB, trigger string) string {
 }
 
 func Deltrigger(db *sql.DB, trigger string) string {
-	statement, err := db.Prepare("delete from books where bottrigger=?")
+	split := strings.Split(trigger, " ")
+	btrigger := split[0]
+	statement, err := db.Prepare("delete from commands where bottrigger=?")
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal(err)
 	}
 
-	statement.Exec(trigger)
+	_, err = statement.Exec(btrigger)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	response := ("Sucessfully deleted the command")
 	return response
 }
 
 func Updatetrigger(db *sql.DB, trigger string) string {
 	statement, err := db.Prepare("update commands set botresponse=? where bottrigger=?")
+	split := strings.Split(trigger, " ")
+	btrigger, bresponse := split[0], split[1:]
+	bresponse2 := strings.Join(bresponse, " ")
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal(err)
 	}
 
-	statement.Exec(trigger)
+	_, err = statement.Exec(bresponse2, btrigger)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	response := ("Successfully updated the command")
 	return response
 }
