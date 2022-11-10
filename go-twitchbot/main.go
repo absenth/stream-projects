@@ -29,7 +29,7 @@ func main() {
 		log.Println(errDB)
 	}
 
-	statement, errDB := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, bottrigger VARCHAR(64), botresponse VARCHAR(64) )")
+	statement, errDB := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, UNIQUE(bottrigger) VARCHAR(64), botresponse VARCHAR(64) )")
 	if errDB != nil {
 		log.Println("Error in creating table")
 	} else {
@@ -39,9 +39,7 @@ func main() {
 
 	// init
 	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	check(err)
 
 	username := "botsenth545"
 	oauth := os.Getenv("TWITCH_OAUTH_TOKEN")
@@ -110,6 +108,16 @@ func main() {
 		myBot.Reply(msg, fmt.Sprintf("I have updated the %s command", cmd.ArgsToString()))
 	})
 
+	rows, _ := db.Query("SELECT bottrigger, botresponse FROM commands")
+	var tempCommand Twitchcommand
+	for rows.Next() {
+		rows.Scan(&tempCommand.bottrigger, &tempCommand.botresponse)
+		myBot.AddCommand(tempCommand.bottrigger, func(cmd chatbot.Command, msg twitch.PrivateMessage) {
+			myBot.Say(tempCommand.botresponse)
+		})
+
+	}
+
 	myBot.Start() // blocking operation
 }
 
@@ -120,15 +128,11 @@ func Addtrigger(db *sql.DB, trigger string) string {
 
 	statement, err := db.Prepare("INSERT INTO commands (bottrigger, botresponse) VALUES (?, ?)")
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	_, err = statement.Exec(btrigger, bresponse2)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	response := ("Sucessfully created the command")
 	return response
@@ -139,15 +143,11 @@ func Deltrigger(db *sql.DB, trigger string) string {
 	btrigger := split[0]
 	statement, err := db.Prepare("delete from commands where bottrigger=?")
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	_, err = statement.Exec(btrigger)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	response := ("Sucessfully deleted the command")
 	return response
@@ -159,16 +159,18 @@ func Updatetrigger(db *sql.DB, trigger string) string {
 	btrigger, bresponse := split[0], split[1:]
 	bresponse2 := strings.Join(bresponse, " ")
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	_, err = statement.Exec(bresponse2, btrigger)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	check(err)
 
 	response := ("Successfully updated the command")
 	return response
+}
+
+func check(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }
