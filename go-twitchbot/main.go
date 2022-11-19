@@ -29,7 +29,7 @@ func main() {
 		log.Println(errDB)
 	}
 
-	statement, errDB := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, UNIQUE(bottrigger) VARCHAR(64), botresponse VARCHAR(64) )")
+	statement, errDB := db.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, bottrigger VARCHAR(64), botresponse VARCHAR(64) )")
 	if errDB != nil {
 		log.Println("Error in creating table")
 	} else {
