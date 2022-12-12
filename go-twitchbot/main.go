@@ -3,10 +3,6 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"github.com/gempir/go-twitch-irc/v3"
-	"github.com/joho/godotenv"
-	_ "github.com/mattn/go-sqlite3"
-	chatbot "github.com/vikpe/twitch-chatbot"
 	cf "go-twitchbot/commands/catfacts"
 	df "go-twitchbot/commands/dogfacts"
 	il "go-twitchbot/commands/islive"
@@ -14,6 +10,11 @@ import (
 	"log"
 	"os"
 	"strings"
+
+	"github.com/gempir/go-twitch-irc/v3"
+	"github.com/joho/godotenv"
+	_ "github.com/mattn/go-sqlite3"
+	chatbot "github.com/vikpe/twitch-chatbot"
 )
 
 type Twitchcommand struct {
