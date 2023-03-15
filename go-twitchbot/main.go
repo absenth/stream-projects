@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"database/sql"
 	"fmt"
 	cf "go-twitchbot/commands/catfacts"
@@ -87,6 +88,7 @@ func main() {
 
 		Addtrigger(db, cmd.ArgsToString())
 		myBot.Reply(msg, fmt.Sprintf("I have added the %s command", cmd.ArgsToString()))
+		reloadCommands()
 	})
 
 	myBot.AddCommand("delcommand", func(cmd chatbot.Command, msg twitch.PrivateMessage) {
@@ -97,6 +99,7 @@ func main() {
 
 		Deltrigger(db, cmd.ArgsToString())
 		myBot.Reply(msg, fmt.Sprintf("I have removed the %s command", cmd.ArgsToString()))
+		reloadCommands()
 	})
 
 	myBot.AddCommand("updatecommand", func(cmd chatbot.Command, msg twitch.PrivateMessage) {
@@ -107,6 +110,7 @@ func main() {
 
 		Updatetrigger(db, cmd.ArgsToString())
 		myBot.Reply(msg, fmt.Sprintf("I have updated the %s command", cmd.ArgsToString()))
+		reloadCommands()
 	})
 
 	rows, _ := db.Query("SELECT bottrigger, botresponse FROM commands")
@@ -173,5 +177,28 @@ func Updatetrigger(db *sql.DB, trigger string) string {
 func check(err error) {
 	if err != nil {
 		log.Fatal(err)
+	}
+}
+
+func reloadCommands() {
+	file, err := os.Open("textcommands.db")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	availableCommands := make(map[string]string)
+
+	for scanner.Scan() {
+		line := strings.Split(scanner.Text(), ":")
+		if len(line) == 2 {
+			command, response := line[0], line[1]
+			availableCommands[command] = response
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		panic(err)
 	}
 }
