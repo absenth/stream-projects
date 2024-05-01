@@ -9,4 +9,4 @@ for n in range(1, 2000001):
     else:
         output.append(f"{n}")
 
-print(output)
+print(*output, sep="\n")
