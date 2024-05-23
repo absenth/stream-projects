@@ -1,5 +1,5 @@
 fn main() {
-    for i in 1..=15000000 {
+    for i in 1..=2000000 {
         match (i % 3, i % 5) {
             (0, 0) => println!("fizzbuzz"),
             (0, _) => println!("fizz"),

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 n=1
-while [ $n -lt 100001 ]
+while [ $n -lt 2000001 ]
 do
     if (( $n % 15 == 0 )); then
         echo "fizzbuzz"
