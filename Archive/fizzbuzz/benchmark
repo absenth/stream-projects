@@ -1,13 +1,15 @@
 #!/bin/zsh
 
- hyperfine "awk -v n=15000000 -f awk/fizzbuzzNoDiv.awk >/dev/null"
- hyperfine "awk -v n=15000000 -f awk/fizzbuzz.awk >/dev/null"
- hyperfine "c/fizzbuzz >/dev/null"
- hyperfine "golang/fizzbuzz >/dev/null"
- hyperfine "java java/fizzbuzz.java >/dev/null"
- hyperfine "perl perl/fizzbuzz.pl  >/dev/null"
- hyperfine "python3.10 python/fizzbuzz.py  >/dev/null"
- hyperfine "rust/fizzbuzz  >/dev/null"
- hyperfine "rust/fizzbuzz2  >/dev/null"
- hyperfine "rust/fizzbuzz4  >/dev/null"
- hyperfine "/bin/zsh bash/fizzbuzz.bash  >/dev/null"
+ hyperfine c/fizzbuzz --warmup 2
+ hyperfine rust/fizzbuzz --warmup 2
+ hyperfine zig/zig-out/bin/zig --warmup 2
+ hyperfine golang/std/fizzbuzz --warmup 2
+ hyperfine golang/array/fizzbuzz-array --warmup 2
+ hyperfine nim/std/fizzbuzz --warmup 2
+ hyperfine nim/array/fizzbuzz --warmup 2
+ hyperfine "perl perl/fizzbuzz.pl" --warmup 2
+ hyperfine "awk -v n=2000000 -f awk/fizzbuzzNoDiv.awk" --warmup 2
+ hyperfine "awk -v n=2000000 -f awk/fizzbuzz.awk" --warmup 2
+ hyperfine "java java/fizzbuzz.java" --warmup 2
+ hyperfine "python3 python/fizzbuzz.py" --warmup 2
+ hyperfine "/usr/bin/zsh bash/fizzbuzz.bash" --warmup 2

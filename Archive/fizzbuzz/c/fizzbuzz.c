@@ -2,7 +2,7 @@
 
 int main(void) {
 
-    for (int i = 1; i < 15000001; i++) {
+    for (int i = 1; i < 2000001; i++) {
 
         if(i % 15 == 0) {
             printf("fizzbuzz\n");
