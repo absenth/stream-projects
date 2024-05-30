@@ -12,4 +12,4 @@
  hyperfine "awk -v n=2000000 -f awk/fizzbuzz.awk" --warmup 2
  hyperfine "java java/fizzbuzz.java" --warmup 2
  hyperfine "python3 python/fizzbuzz.py" --warmup 2
- hyperfine "/usr/bin/zsh bash/fizzbuzz.bash" --warmup 2
+ hyperfine "/bin/zsh bash/fizzbuzz.bash" --warmup 2
